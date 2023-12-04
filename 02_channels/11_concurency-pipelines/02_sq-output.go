@@ -30,4 +30,8 @@ func main() {
 	for n := range cubeRoot(gen(1, 2, 3, 4)) {
 		fmt.Println(n)
 	}
+
+	for n := range gen(1, 2, 3, 4) {
+		fmt.Println(n)
+	}
 }

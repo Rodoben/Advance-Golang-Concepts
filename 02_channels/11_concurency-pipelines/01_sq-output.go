@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-// This example here is withoutthe concurrency pipeline
+// This example here is without the concurrency pipeline
 // Using same code in the next file to show concurrency pipeline
 
 func main() {

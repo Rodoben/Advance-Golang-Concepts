@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// implement basic cncurrenct to show the working of go routines.
+// implement basic concurrency to show the working of go routines.
 // usage of time.Sleep to show the diffrent output being printed at different time
 
 func main() {

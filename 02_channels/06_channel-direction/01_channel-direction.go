@@ -24,7 +24,6 @@ func MultiplicationTable() <-chan int {
 		}
 		close(out)
 	}()
-
 	return out
 }
 
@@ -33,13 +32,10 @@ func SumPuller(c <-chan int) <-chan int {
 	go func() {
 		var sum int
 		for n := range c {
-
-			//fmt.Println(n)
 			sum += n
 		}
 		out <- sum
 		close(out)
 	}()
-
 	return out
 }

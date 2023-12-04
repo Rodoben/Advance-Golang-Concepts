@@ -6,7 +6,7 @@ import (
 )
 
 // Data Race:
-// Data race is a condition where one global varibale is taken and we try to increment the counter variable using two go routines.
+// Data race is a condition where one global variable is taken and we try to increment the counter variable using two go routines.
 // Thus go routine read and write to a memory address of the shared counter variable
 // Waitgroup helps to syncronize the go routines by adding, waiting and done.
 
