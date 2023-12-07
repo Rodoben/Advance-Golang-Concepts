@@ -43,7 +43,7 @@ func main() {
 		//close(ch)
 	}()
 
-	//fmt.Println(<-ch)
+	fmt.Println(<-ch)
 
 	// for v := range ch {
 	// 	for _, c := range v {
@@ -59,18 +59,18 @@ func main() {
 	// 	}
 	// }
 
-	data := <-ch
+	// data := <-ch
 
-	for i := 0; i < len(data); i++ {
-		c := data[i]
-		for _, v := range c.Address {
-			fmt.Println(v.city, v.state)
-		}
-		for i, v := range c.contact {
-			fmt.Println(i, v)
-		}
-		fmt.Println(c.age)
-		fmt.Println(c.contact)
-		fmt.Println(c.name)
-	}
+	// for i := 0; i < len(data); i++ {
+	// 	c := data[i]
+	// 	for _, v := range c.Address {
+	// 		fmt.Println(v.city, v.state)
+	// 	}
+	// 	for i, v := range c.contact {
+	// 		fmt.Println(i, v)
+	// 	}
+	// 	fmt.Println(c.age)
+	// 	fmt.Println(c.contact)
+	// 	fmt.Println(c.name)
+	// }
 }
