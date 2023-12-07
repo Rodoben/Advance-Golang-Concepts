@@ -5,6 +5,8 @@ import (
 	"sync"
 )
 
+// n number of go routines writing to one channel
+
 var wg sync.WaitGroup
 
 type hotdog struct {
@@ -13,9 +15,8 @@ type hotdog struct {
 }
 
 func main() {
-	wg.Add(3)
 	c := make(chan hotdog)
-
+	//wg.Add(2)  we need to specify the add method outside the go rotuine to avoid race condition
 	xs := []hotdog{
 		{number: 1, name: "Goroutine"},
 		{number: 2, name: "Goroutine"},
@@ -29,38 +30,30 @@ func main() {
 		{number: 10, name: "Goroutine"},
 		{number: 11, name: "Goroutine"},
 	}
-
-	for i, v := range xs {
-		v := v
-		i := i
-		go func(u hotdog, i int) {
-			fmt.Println("loop:", i, v)
-
-		}(v, i)
-	}
-	wg.Done()
-	fmt.Println("___________________")
 	go func() {
+		wg.Add(1)
 		for _, x := range xs {
 			x.name = x.name + "-1"
 			c <- x
 		}
 		wg.Done()
 	}()
-	fmt.Println("___________________")
+
 	go func() {
+		wg.Add(1)
 		for _, x := range xs {
 			x.name = x.name + "-2"
 			c <- x
 		}
 		wg.Done()
 	}()
-	fmt.Println("___________________")
+
 	go func() {
 		wg.Wait()
 		close(c)
 	}()
 	fmt.Println("___________________")
+
 	// // for i := 0; i < 20; i++ {
 	// // 	fmt.Println(<-c)
 	// // }

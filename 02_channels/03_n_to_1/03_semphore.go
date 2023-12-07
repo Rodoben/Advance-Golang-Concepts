@@ -1,10 +1,10 @@
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
+// signalling the program
+// avoid package sync
+// we are again trying to send values to one channel via 2 go routine. and we are not closing the channel in those 2 go routines, so to close the channel we make use of new go routine and first bring out the semaphore
 func main() {
 	c := make(chan int)
 	done := make(chan bool)
@@ -23,12 +23,27 @@ func main() {
 		done <- true
 	}()
 
+	// <-done
+	// <-done
+	// close(c)
 	go func() {
 		<-done
 		<-done
 		close(c)
 	}()
-	time.Sleep(1 * time.Second)
+
+	// wrong way of signalling
+	// <-done
+	// <-done
+	// close(c)
+	// why? after launching 2 go routines, the control flow immediately want to throw out the value true from the done channel, meanwhile other 2 go routines hace not finished its execution.
+
+	// putting the semaphore in another go routines launches a new process and it waits
+
+	// to loop it without range clause , first we do not need to close the chan and can avoid signalling
+	// for i := 0; i < 20; i++ {
+	// 	fmt.Println(<-c)
+	// }
 
 	for n := range c {
 		fmt.Println(n)
