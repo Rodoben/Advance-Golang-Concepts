@@ -18,7 +18,7 @@ func main() {
 	}
 
 	fmt.Printf("%T , %v \n", arr, arr)
-	fmt.Println("Length of slice", len(arr))
+	fmt.Println("Length of slice:", len(arr))
 
 	for i, v := range arr {
 		fmt.Println(i, v)

@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type Address struct {
 	city  string
 	state string
@@ -42,8 +40,8 @@ func main() {
 		}
 		//close(ch)
 	}()
-
-	fmt.Println(<-ch)
+	// once the data is flown the channel becomes empty
+	//fmt.Println(<-ch)
 
 	// for v := range ch {
 	// 	for _, c := range v {

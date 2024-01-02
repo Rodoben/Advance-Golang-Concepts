@@ -15,7 +15,7 @@ func main() {
 	// var m map[string]int{
 	// 	"don": 23,
 	// 	"derek": 16,
-	// } // cant initialize it as such ,  do this initializ the variable globally
+	// } // cant initialize it as such ,  can  initialize the variable globally without trying to insert any element
 
 	m1 = map[string]int{
 		"don":   23,
@@ -24,6 +24,7 @@ func main() {
 	fmt.Println(m1)
 
 	m2 := make(map[string]int)
+	fmt.Println("Zero Value:", m2)
 	fmt.Println(len(m2))
 	m2["abc"] = 12
 	m2["vcd"] = 12

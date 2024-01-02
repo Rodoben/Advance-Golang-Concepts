@@ -6,7 +6,7 @@ import (
 )
 
 // n number of go routines writing to one channel
-// using waitgroups in correct way to avoid data race
+// when using two or more goroutine, we dont close the channel there, instead use one more go routine to close the channel and wait for the WaitGroup
 
 func main() {
 

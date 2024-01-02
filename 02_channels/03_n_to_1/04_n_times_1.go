@@ -29,6 +29,8 @@ func main() {
 		close(c)
 	}()
 
+	// here we are tring to range it one time
+
 	for v := range c {
 		fmt.Println(v)
 	}
